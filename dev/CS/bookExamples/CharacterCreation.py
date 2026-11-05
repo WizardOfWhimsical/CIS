@@ -13,8 +13,9 @@ job = {
 }
 
 explainations = {
-    "explaination": "With your stats you will make decissions and make a roll of the die to see if you have successfully passed the stat check. This is called your 'savings throw', it is a statistical process inwhich you check numbers aginst your stat to see the out come of a decission. (for more info type 'more' or 'q' to quit)",
-    "examples": "Your strenght will effect 'savings throws'that check against things like how much weight carry to how much damage you can do in battle. \nYour intellegence will be used with you abilty to cast spells, \nconstitution is how much life you have and how well you take a hit, \ndexetery is how well you move and hit someone, \nwisdom is how well you learn and percieve things around you, \nand charisma is (believe it or not) how good your character is visually percieved in the game by other players.",
+    "explaination": "With your stats you will make decissions and make a roll of the die to see if \nyou have successfully passed the stat check. This is called your 'savings throw', \nit is a statistical process inwhich you check numbers aginst your stat to \nsee the out come of a decission. (for more info type 'more')",
+    "examples": "Your strenght will effect 'savings throws' that check against things like how much \nweight you can carry to how much damage you can do in battle. \nYour intellegence will be used with you abilty to cast spells, \nconstitution is how much life you have and how well you take a hit, \ndexetery is how well you move and hit someone, \nwisdom is how well you learn and percieve things around you, \nand charisma is (believe it or not) how good your character is visually percieved in the game by other players.",
+    "stat_choice_walkthrough": "We will begin by rolling 4 die, \ntaking that total and putting it into a stat. \nYou will get 1 roll/stat and 1 reroll (use it wisely)",
 }
 dialog = {
     "intro": "Have you ever wanted to get away. find an escape into another world, one of fantastic adventure and imagination. One that will sweep the sorrows of tommorow. well look no further and dive into the world of adventure with Dungeons and Dragons. Here your mind can wonder and create in a manner you have never thought. So lets start the adventure with creating a a basic character.",
@@ -24,14 +25,16 @@ dialog = {
 
 def stat_explainations():
     user_choice = input(f"{dialog['stat_dialog']}\n")
-    while user_choice != "q":
-        if user_choice == "explain":
-            user_choice = input(f"{explainations['explaination']}\n")
-            if user_choice == "more":
-                print(f"{explainations['examples']}\n")
-                return
+
+    if user_choice == "explain":
+        user_choice = input(f"{explainations['explaination']}\n")
+        if user_choice == "more":
+            print(f"{explainations['examples']}\n")
+            return print(explainations["stat_choice_walkthrough"])
         else:
-            return
+            return print(explainations["stat_choice_walkthrough"])
+    else:
+        return print(explainations["stat_choice_walkthrough"])
 
 
 def intro():
@@ -87,7 +90,8 @@ class Character:
                 self.stats[stat] += completed["stat_bonuses"][stat]
 
     def choose_stats(self):
-        stat_explainations()
+        # dont like this rn
+        start = input(stat_explainations())
 
 
 if __name__ == "__main__":
