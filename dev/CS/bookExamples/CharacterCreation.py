@@ -12,11 +12,30 @@ job = {
     "mage": {"one-handed weapons": 1, "light armor": 1, "spell proficiency": 2},
 }
 
+explainations = {
+    "explaination": "With your stats you will make decissions and make a roll of the die to see if you have successfully passed the stat check. This is called your 'savings throw', it is a statistical process inwhich you check numbers aginst your stat to see the out come of a decission. (for more info type 'more' or 'q' to quit)",
+    "examples": "Your strenght will effect 'savings throws'that check against things like how much weight carry to how much damage you can do in battle. \nYour intellegence will be used with you abilty to cast spells, \nconstitution is how much life you have and how well you take a hit, \ndexetery is how well you move and hit someone, \nwisdom is how well you learn and percieve things around you, \nand charisma is (believe it or not) how good your character is visually percieved in the game by other players.",
+}
+dialog = {
+    "intro": "Have you ever wanted to get away. find an escape into another world, one of fantastic adventure and imagination. One that will sweep the sorrows of tommorow. well look no further and dive into the world of adventure with Dungeons and Dragons. Here your mind can wonder and create in a manner you have never thought. So lets start the adventure with creating a a basic character.",
+    "stat_dialog": "Here we will begin to build you stats that will effect everything for your character. If you would like to know how these stats are used in gameplay, type 'explain'.",
+}
+
+
+def stat_explainations():
+    user_choice = input(f"{dialog['stat_dialog']}\n")
+    while user_choice != "q":
+        if user_choice == "explain":
+            user_choice = input(f"{explainations['explaination']}\n")
+            if user_choice == "more":
+                print(f"{explainations['examples']}\n")
+                return
+        else:
+            return
+
 
 def intro():
-    print(
-        "have you ever wanted to get away. find an escape into another world, one of fantastic adventure and imagination. One that will sweep the sorrows of tommorow. well look no further and dive into the world of adventure with Dungeons and Dragons. Here your mind can wonder and create in a manner you have never thought. So lets start the adventure with creating a a basic character."
-    )
+    print(dialog["intro"])
     return input("So choose a name worthy adventurer\n")
 
 
@@ -68,7 +87,7 @@ class Character:
                 self.stats[stat] += completed["stat_bonuses"][stat]
 
     def choose_stats(self):
-        print("stopping here")
+        stat_explainations()
 
 
 if __name__ == "__main__":
@@ -76,6 +95,7 @@ if __name__ == "__main__":
     new_character = Character(name)
     new_character.choose_race()
     new_character.choose_job()
-    print("**************")
-    print(new_character.__dict__)
-    print("**************")
+    new_character.choose_stats()
+    # print("**************")
+    # print(new_character.__dict__)
+    # print("**************")

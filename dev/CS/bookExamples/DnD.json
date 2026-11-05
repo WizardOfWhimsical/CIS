@@ -1,0 +1,28 @@
+[
+  {
+    "type": "what is this object",
+    "name_of_labeled_thing": {
+      "rest_of_object": "what_ever"
+    }
+  },
+  {
+    "type": "races",
+    "race": {
+      "human": { "strength": 2, "dexterity": 1, "constitution": 1 },
+      "elf": { "dexterity": 2, "intelligence": 1, "charisma": 1 },
+      "dwarf": { "strength": 1, "constitution": 2, "wisdom": 1 }
+    }
+  },
+  {
+    "type": "jobs",
+    "job": {
+      "warrior": { "weapons": 1, "armor": 2, "experience proficiency": "10%" },
+      "archer": { "bow": 2, "one-handed weapons": 1, "light armor": 1 },
+      "mage": {
+        "one-handed weapons": 1,
+        "light armor": 1,
+        "spell proficiency": 2
+      }
+    }
+  }
+]
